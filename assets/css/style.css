@@ -16,23 +16,26 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    
+    margin: 0px auto;
     margin-top: 200px;
+    width: 40%;
     font-family: "Helvetica", sans-serif;
 
 }
 
-#header_1 {
+#title_h {
     display: flex;
     justify-content: center;
     margin: 0px auto;
 }
 
-#header_2 {
+#welcome_h {
     display: flex;
     justify-content: center;
 }
 
-#description {
+#description_p {
     display: flex;
     justify-content: center;
     margin: 0px auto;
@@ -70,3 +73,7 @@ body {
 p {
     text-align: center;
 }
+
+ul {
+    list-style-type: none;
+  }
