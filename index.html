@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>JavaScript Quiz!</title>
+    <title>3D Pringing Quiz!</title>
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
@@ -17,8 +17,8 @@
     </div>
     <!-- Content Container -->
     <div id="container_2">
-        <h1 id="header_h1">JavaScript Quiz</h1>
-        <h3 id="header_h2">Welcome to the JavaScript Quiz</h3>
+        <h1 id="title_h">3D Printing Quiz</h1>
+        <h3 id="welcome_h">Welcome to the 3D Printing Quiz</h3>
         <p id="description_p">
             You have 30 seconds to answer 5 question.
             <br>
@@ -28,6 +28,21 @@
             <br>
             May the odds be ever in your favor
         </p>
+        <ul class="answers" id="multiple_choice_ul">
+            <li id="choice_1_li">
+                <button id="choice_1_b"></button>
+            </li>
+            <li id="choice_2_li">
+                <button id="choice_2_b"></button>
+            </li>
+            <li id="choice_3_li">
+                <button id="choice_3_b"></button>
+            </li>
+            <li id="choice_4_li">
+                <button id="choice_4_b"></button>
+            </li>
+        </ul>
+        <input type="text" name="" id="answer_input">
         <button id="start_quiz_b">Start Quiz!</button>
     </div>
     <script src="scripts/script.js"></script>
