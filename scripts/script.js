@@ -48,6 +48,7 @@ enter_initials_l_e.setAttribute("style", "display: none;");
 //Start Question count from 0
 var question_num = 0
 
+
 //Event Listeners
 start_quiz_b_e.addEventListener("click", start_quiz)
 view_highscores_b_e.addEventListener("click", high_scores)
@@ -62,20 +63,23 @@ document.addEventListener("keypress", function (e) {
 //Functions
 
 //Landing Page
-function start_quiz(event){
+function start_quiz(event, ){
+    title_h_e.innerHTML = questions_list[question_num];
     welcome_h_e.setAttribute("style", "display: none;");
     description_p_e.setAttribute("style", "display: none;");
     start_quiz_b_e.setAttribute("style", "display: none;");
     var li_e = document.createElement("li");
     li_e.innerHTML = "li";
-    question_num++
+    
 
 }
 //Questions
 function next_question() {
-    title_h_e.innerHTML = questions_list[question_num];
+    console.log(question_num)
     question_num++
-    if (question_num > 5){
+    title_h_e.innerHTML = questions_list[question_num];
+    
+    if (question_num > 4){
         all_done();
     }
     
