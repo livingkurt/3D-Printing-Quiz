@@ -26,6 +26,11 @@ var clear_highscores_b_e = document.getElementById("clear_highscores_b")
 
 var questions_list = {1 : "What does FDM stand for when it refers to FDM 3D Printing?", 2 : "What part of the printer melts the plastic to be extruded?", 3 : "What is the most common filament type?", 4 : "Do you need a heated bed for all types of filaments?", 5 : "What is the most common nozzle size?"};
 var answer_list = {1 : "Fused Depsoition Model", 2 : "Hotend", 3 : "PLA", 4 : "No", 5 : "0.4 mm"};
+var question_1_choice_list = {1 : "Fused Depsoition Model", 2 : "Formal Development Methodology", 3 : "Finite-Difference Method", 4 : "Fused Deposition Manufacturing"};
+var question_2_choice_list = {1 : "Extruder", 2 : "Hotend", 3 : "PTFE Tube", 4 : "Heated Bed"};
+var question_3_choice_list = {1 : "ABS", 2 : "PETG", 3 : "PLA", 4 : "ASA"};
+var question_4_choice_list = {1 : "Yes", 2 : "No"};
+var question_45choice_list = {1 : "0.25mm", 2 : "0.4mm", 3 : "0.6mm", 4 : "0.8mm"};
 
 //Hide Elements
 answer_i_e.setAttribute("style", "display: none;");
