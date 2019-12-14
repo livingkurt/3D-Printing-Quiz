@@ -83,6 +83,12 @@ body {
     
 }
 
+#multiple_choice_ul {
+    display: flex;
+    flex-direction: column;
+    padding-left: 0px;
+}
+
 #submit_score_b {
     /* display: flex;
     flex-direction: row; */
