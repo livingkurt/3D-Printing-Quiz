@@ -57,6 +57,10 @@ body {
     border-radius: 10px;
 }
 
+#start_over_b {
+    display: none;
+}
+
 #start_quiz_b {
     margin: 10px auto;
 }
@@ -66,7 +70,7 @@ body {
 }
 
 #enter_initials_l {
-    display: flex;
+    display: none;
     width: 33%;
     margin: auto;
     font-size: 20px;
@@ -83,8 +87,10 @@ body {
     
 }
 
+
+
 #multiple_choice_ul {
-    display: flex;
+    display: none;
     flex-direction: column;
     padding-left: 0px;
 }
@@ -92,6 +98,7 @@ body {
 #submit_score_b {
     /* display: flex;
     flex-direction: row; */
+    display: none;
     justify-content: center;
     width: 25%;
     margin: auto;
@@ -99,10 +106,12 @@ body {
 
 }
 
+#clear_highscores_b {
+    display: none;
+}
+
 #answer_i {
-    /* display: flex;
-    flex-direction: row;
-    justify-content: flex-start; */
+    display: none;
     padding: 0px auto;
     width: 75%;
     font-size: 20px;

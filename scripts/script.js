@@ -21,42 +21,36 @@ var answer_i_e = document.getElementById("answer_i")
 var start_quiz_b_e = document.getElementById("start_quiz_b")
 var view_highscores_b_e = document.getElementById("view_highscores_b")
 var submit_score_b_e = document.getElementById("submit_score_b")
-var go_back_b_e = document.getElementById("go_back_b")
+var start_over_b_e = document.getElementById("start_over_b")
 var clear_highscores_b_e = document.getElementById("clear_highscores_b")
 var choice_1_b_e = document.getElementById("choice_1_b")
 var choice_2_b_e = document.getElementById("choice_2_b")
 var choice_3_b_e = document.getElementById("choice_3_b")
 var choice_4_b_e = document.getElementById("choice_4_b")
 
-
 //Questions
 var questions_list = ["What does FDM stand for when it refers to FDM 3D Printing?", "What part of the printer melts the plastic to be extruded?", "What is the most common filament type?", "Do you need a heated bed for all types of filaments?", "What is the most common nozzle size?"];
+
 //Correct Answers
 var answer_list = ["Fused Depsoition Model", "Hotend", "PLA", "No", "0.4 mm"];
-//Multiple Choice
+
+//Multiple Choice Arrays
 var question_1_choice_list = ["Fused Deposition Model", "Formal Development Methodology", "Finite-Difference Method", "Fused Deposition Manufacturing"];
 var question_2_choice_list = ["Extruder", "Hotend", "PTFE Tube", "Heated Bed"];
 var question_3_choice_list = ["ABS", "PETG", "PLA", "ASA"];
 var question_4_choice_list = ["Yes", "No"];
 var question_5_choice_list = ["0.25mm", "0.4mm", "0.6mm", "0.8mm"];
-
+//Grouped Array
 var all_choices_list = [question_1_choice_list, question_2_choice_list, question_3_choice_list, question_4_choice_list, question_5_choice_list]
+var all_buttons_list = [choice_1_b_e, choice_2_b_e, choice_3_b_e, choice_4_b_e]
 
 
 
-//Hide Elements
-answer_i_e.setAttribute("style", "display: none;");
-submit_score_b_e.setAttribute("style", "display: none;");
-go_back_b_e.setAttribute("style", "display: none;");
-clear_highscores_b_e.setAttribute("style", "display: none;");
-multiple_choice_ul_e.setAttribute("style", "display: none;");
-enter_initials_l_e.setAttribute("style", "display: none;");
-// console.log(title_h_e,welcome_h_e,description_p_e,start_quiz_b_e)
+
 
 
 //Start Question count from 0
 var question_num = 0
-
 
 //Event Listeners
 start_quiz_b_e.addEventListener("click", start_quiz)
@@ -73,62 +67,62 @@ document.addEventListener("keypress", function (e) {
 
 //Landing Page
 function start_quiz(event, ){
+    //Change Text
     title_h_e.innerHTML = questions_list[question_num];
+    //Hide Elements
     welcome_h_e.setAttribute("style", "display: none;");
     description_p_e.setAttribute("style", "display: none;");
     start_quiz_b_e.setAttribute("style", "display: none;");
     var li_e = document.createElement("li");
     li_e.innerHTML = "li";
+    //Show Elements
     multiple_choice_ul_e.setAttribute("style", "display: flex;");
     // change_choices(question_1_choice_list, question_2_choice_list, question_3_choice_list, question_4_choice_list, question_5_choice_list)
-    change_choices(all_choices_list)
-
-    
-    
+    change_choices(all_choices_list, all_buttons_list)
 
 }
-function change_choices(a){
+function change_choices(a, b){
     // for (var i = 0; i < 3; i++){
     //     a[0]
     // }
-    a = all_choices_list[question_num]
-    choice_1_b_e.innerHTML = a[0];
-    choice_2_b_e.innerHTML = a[1];
-    choice_3_b_e.innerHTML = a[2];
-    choice_4_b_e.innerHTML = a[3];
+    
+    // bb = b[question_num]
+    // for (var i = 0; i < 3; i++){
+    aa = a[question_num]
+    choice_1_b_e.innerHTML = aa[0];
+    choice_2_b_e.innerHTML = aa[1];
+    choice_3_b_e.innerHTML = aa[2];
+    choice_4_b_e.innerHTML = aa[3];
     
 }
+//Added all of the multiple choice answers arrays to its own array, then made a function that 
 //Questions
 function next_question() {
-    
-    console.log(question_num)
     question_num++
+    //Change Text
     title_h_e.innerHTML = questions_list[question_num];
-
     if (question_num > 4){
         all_done();
     }
     else {
-    // for (var i = 0; i < 4; i++){
         change_choices(all_choices_list)
-        // console.log(choice)
-            
         }
         
-        
-    
-    
 }
 //End Quiz, allows you to type in your initials and submit your score to be saved to local storage
 function all_done() {
-    // console.log("enter_name")
+    //Hide Elements
+    multiple_choice_ul_e.setAttribute("style", "display: none;")
+    //Show Elements
     title_h_e.innerHTML = "All Done!"
     answer_i_e.setAttribute("style", "display: flex;");
     submit_score_b_e.setAttribute("style", "display: flex;");
     enter_initials_l_e.setAttribute("style", "display: flex;");
+    //Attribute Elements
     title_h_e.setAttribute("style", "margin: 0px; justify-content: flex-start;");
-    final_score_l_e.innerHTML = "Your final score is "
     final_score_l_e.setAttribute("style", "display: flex; justify-content: flex-start;");
+    //Change Text
+    final_score_l_e.innerHTML = "Your final score is "
     
 
 }
