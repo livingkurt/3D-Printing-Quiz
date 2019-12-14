@@ -1,2 +1,2 @@
-# JavaScript-Quiz
-JavaScript Quiz
+# 3D Printing Quiz
+3D Printing Quiz
