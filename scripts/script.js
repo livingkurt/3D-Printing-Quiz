@@ -52,8 +52,7 @@ var question_5_choice_list = ["0.25mm", "0.4mm", "0.6mm", "0.8mm"];
 var all_choices_list = [question_1_choice_list, question_2_choice_list, question_3_choice_list, question_4_choice_list, question_5_choice_list]
 var all_buttons_list = [choice_1_b_e, choice_2_b_e, choice_3_b_e, choice_4_b_e]
 
-//Highscore Object
-var highscore_saved_list = {}
+
 
 //Start Question count from 0
 var question_num = 0
@@ -69,6 +68,8 @@ document.addEventListener("keypress", function (e) {
       }
 })
 submit_score_b_e.addEventListener("click", submit_highscore)
+start_over_b_e.addEventListener("click", start_over)
+clear_highscores_b_e.addEventListener("click", clear_highscores)
 
 
 //Functions
@@ -119,7 +120,7 @@ function next_question() {
         
 }
 var score = 0;
-
+//Pops up with a correct or incorrect label
 function is_correct(event) {
     if (event.target.matches("button")){
         // console.log(event.target.matches("button"))
@@ -132,8 +133,8 @@ function is_correct(event) {
             score = score + 10;
             console.log(score)
             // await delay(2000);
-            // next_question();
-            setTimeout(next_question, 1000);
+            next_question();
+            // setTimeout(next_question, 1000);
 
         }
         else if (user_choice !== answer_list[question_num]){
@@ -142,8 +143,8 @@ function is_correct(event) {
             score = score - 5;
             console.log(score)
             // await delay(2000);
-            // next_question();
-            setTimeout(next_question, 1000);
+            next_question();
+            // setTimeout(next_question, 1000);
         }
     }
 }
@@ -187,41 +188,56 @@ function all_done() {
     
 
 }
+//Highscore Object
+var highscore_saved_list = {}
+
+//Submits highscore to be stored in local storage and displayed on highscores page
+function submit_highscore() {
+    //Check if there is anything in storage
+    if (localStorage.getItem("scores") === null) { //If there isnt anything in storage
+        var initials_to_save = answer_i_e.value;
+        highscore_saved_list[initials_to_save] = score
+        console.log(highscore_saved_list)
+        localStorage.setItem("scores", JSON.stringify(highscore_saved_list));
+    }
+    
+    else { //If there is something in storage
+        var highscore_saved_list = JSON.parse(localStorage.getItem("scores"));
+        var initials_to_save = answer_i_e.value;
+        highscore_saved_list[initials_to_save] = score
+        console.log(highscore_saved_list)
+        localStorage.setItem("scores", JSON.stringify(highscore_saved_list));
+    }
+}
+
+function populate_list() {
+    
+}
 
 //Shows Highscores page from local storage
 function high_scores() {
-    title_h_e.setAttribute("style", "margin: 0px; justify-content: flex-start;");
-    title_h_e.innerHTML = "High Scores";
+    //Hide Elements
+    answer_i_e.setAttribute("style", "display: none;");
+    final_score_l_e.setAttribute("style", "display: none;");
+    enter_initials_l_e.setAttribute("style", "display: none;");
+    submit_score_b_e.setAttribute("style", "display: none;");
     description_p_e.setAttribute("style", "display: none;");
     welcome_h_e.setAttribute("style", "display: none;");
     multiple_choice_ul_e.setAttribute("style", "display: none;")
     start_quiz_b_e.setAttribute("style", "display: none;");
+    //Show Elements
+    title_h_e.setAttribute("style", "margin: 0px; justify-content: flex-start;");
     start_over_b_e.setAttribute("style", "display: flex;");
     clear_highscores_b_e.setAttribute("style", "display: flex;");
     highscores_b_g_e.setAttribute("style", "display: flex;");
-    // submit_score_b_e.setAttribute("style", "display: block;");
-
-    
+    //Change Text
+    title_h_e.innerHTML = "High Scores";
 }
-//Submits highscore to be stored in local storage and displayed on highscores page
-function submit_highscore() {
-    var initials_to_save = answer_i_e.value;
-    // var initials_to_save = document.getElementById("initial_area")
-    // console.log(initials_to_save)
-    // initial_area
-    highscore_saved_list[initials_to_save] = score
-    // console.log(highscore_saved_list)
-    = JSON.stringify(highscore_saved_list)
-    // console.log(highscore_saved_list)
-    // localStorage.setItem("todos", JSON.stringify(todos));
-    high_scores();
-    
 
-    
-}
 //Deletes highscores from local storage
 function clear_highscores() {
-    title_h_e.innerHTML = "High Scores";
+    // title_h_e.innerHTML = "High Scores";
+    localStorage.clear();
     
 }
 //Starts the quiz back at the Landing page
@@ -229,7 +245,74 @@ function start_over() {
     location.reload();
     
 }
-//Pops up with a correct or incorrect label
-function correct(){
 
-}
+
+
+
+
+
+
+// function load_from_storage(){
+//     // localStorage.getItem(initials_to_save, JSON.parse(score));
+//     var stored_highscores = JSON.parse(localStorage.getItem("object"));
+//     console.log(stored_highscores)
+//     // var init = highscore_saved_list[initials_to_save]
+//     var result = Object.keys(highscore_saved_list).map(function(key) {
+//         return [Number(key), highscore_saved_list[key]];
+//       });
+//     console.log(result)
+
+// }
+
+// function load_from_storage() {
+//     // Get stored todos from localStorage
+//     // Parsing the JSON string to an object
+//     var stored_highscores = JSON.parse(localStorage.getItem("object"));
+  
+//     // If todos were retrieved from localStorage, update the todos array to it
+//     if (stored_highscores !== null) {
+//       todos = stored_highscores;
+//     }
+  
+//     // Render todos to the DOM
+//     renderTodos();
+//   }
+
+
+// function renderTodos() {
+//     // Clear todoList element and update todoCountSpan
+//     todoList.innerHTML = "";
+//     todoCountSpan.textContent = todos.length;
+
+//     // Render a new li for each todo
+//     for (var i = 0; i < todos.length; i++) {
+//         var todo = todos[i];
+
+//         var li = saved_highscores_ul_e.createElement("li");
+//         li.textContent = todo;
+//         li.setAttribute("data-index", i);
+
+//         // var button = document.createElement("button");
+//         // button.textContent = "Complete";
+
+//         // li.appendChild(button);
+//         todoList.appendChild(li);
+//     }
+// }
+
+
+
+
+// //Highscore Object
+// var highscores_list = {}
+// //Submits highscore to be stored in local storage and displayed on highscores page
+// function submit_highscore() {
+
+//     var initials_to_save = answer_i_e.value;
+//     highscores_list[initials_to_save] = score;
+//     console.log(highscores_list)
+
+//     localStorage.setItem("scores", JSON.stringify(saved_highscores));
+
+    
+// }
