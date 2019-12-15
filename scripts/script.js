@@ -83,6 +83,7 @@ function start_quiz(){
     multiple_choice_ul_e.setAttribute("style", "display: flex;");
     // change_choices(question_1_choice_list, question_2_choice_list, question_3_choice_list, question_4_choice_list, question_5_choice_list)
     change_choices(all_choices_list, all_buttons_list)
+    setTime();
 
 }
 function change_choices(a, b){
@@ -129,9 +130,25 @@ function is_correct(event) {
             console.log("Incorrect")
             correct_incorrect_l_e.innerHTML = "Incorrect!"
         }
-
     }
-    
+}
+
+// var timeEl = document.querySelector(".time");
+// var mainEl = document.getElementById("main");
+
+var secondsLeft = 60;
+
+function setTime() {
+  var timerInterval = setInterval(function() {
+    secondsLeft--;
+    time_l_e.textContent = "Time: " + secondsLeft;
+
+    if(secondsLeft === 0) {
+      clearInterval(timerInterval);
+    //   sendMessage();
+    }
+
+  }, 1000);
 }
 
 
