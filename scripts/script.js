@@ -40,7 +40,7 @@ var line_hr_e = document.getElementById("line_hr")
 var questions_list = ["What does FDM stand for when it refers to FDM 3D Printing?", "What part of the printer melts the plastic to be extruded?", "What is the most common filament type?", "What file type does a 3D printer read?", "What is the most common nozzle size?"];
 
 //Correct Answers
-var answer_list = ["Fused Deposition Model", "Hotend", "PLA", "No", "0.4mm"];
+var answer_list = ["Fused Deposition Model", "Hotend", "PLA", ".gcode", "0.4mm"];
 
 //Multiple Choice Arrays
 var question_1_choice_list = ["Fused Deposition Model", "Formal Development Methodology", "Finite-Difference Method", "Fused Deposition Manufacturing"];
@@ -51,6 +51,9 @@ var question_5_choice_list = ["0.25mm", "0.4mm", "0.6mm", "0.8mm"];
 //Grouped Array
 var all_choices_list = [question_1_choice_list, question_2_choice_list, question_3_choice_list, question_4_choice_list, question_5_choice_list]
 var all_buttons_list = [choice_1_b_e, choice_2_b_e, choice_3_b_e, choice_4_b_e]
+
+//Highscore Object
+var highscore_saved_list = {}
 
 //Start Question count from 0
 var question_num = 0
@@ -65,6 +68,7 @@ document.addEventListener("keypress", function (e) {
         next_question();
       }
 })
+submit_score_b_e.addEventListener("click", submit_highscore)
 
 
 //Functions
@@ -114,6 +118,7 @@ function next_question() {
         }
         
 }
+var score = 0;
 
 function is_correct(event) {
     if (event.target.matches("button")){
@@ -124,14 +129,25 @@ function is_correct(event) {
         if (user_choice === answer_list[question_num]){
             console.log("correct")
             correct_incorrect_l_e.innerHTML = "Correct!"
+            score = score + 10;
+            console.log(score)
+            // await delay(2000);
+            // next_question();
+            setTimeout(next_question, 1000);
 
         }
-        else {
+        else if (user_choice !== answer_list[question_num]){
             console.log("Incorrect")
             correct_incorrect_l_e.innerHTML = "Incorrect!"
+            score = score - 5;
+            console.log(score)
+            // await delay(2000);
+            // next_question();
+            setTimeout(next_question, 1000);
         }
     }
 }
+
 
 // var timeEl = document.querySelector(".time");
 // var mainEl = document.getElementById("main");
@@ -156,6 +172,8 @@ function setTime() {
 function all_done() {
     //Hide Elements
     multiple_choice_ul_e.setAttribute("style", "display: none;")
+    line_hr_e.setAttribute("style", "display: none;")
+    correct_incorrect_l_e.setAttribute("style", "display: none;")
     //Show Elements
     title_h_e.innerHTML = "All Done!"
     answer_i_e.setAttribute("style", "display: flex;");
@@ -165,7 +183,7 @@ function all_done() {
     title_h_e.setAttribute("style", "margin: 0px; justify-content: flex-start;");
     final_score_l_e.setAttribute("style", "display: flex; justify-content: flex-start;");
     //Change Text
-    final_score_l_e.innerHTML = "Your final score is "
+    final_score_l_e.innerHTML = "Your final score is: " + score;
     
 
 }
@@ -187,13 +205,23 @@ function high_scores() {
 }
 //Submits highscore to be stored in local storage and displayed on highscores page
 function submit_highscore() {
+    var initials_to_save = answer_i_e.value;
+    // var initials_to_save = document.getElementById("initial_area")
+    // console.log(initials_to_save)
+    // initial_area
+    highscore_saved_list[initials_to_save] = score
+    // console.log(highscore_saved_list)
+    = JSON.stringify(highscore_saved_list)
+    // console.log(highscore_saved_list)
+    // localStorage.setItem("todos", JSON.stringify(todos));
+    high_scores();
+    
+
     
 }
 //Deletes highscores from local storage
 function clear_highscores() {
     title_h_e.innerHTML = "High Scores";
-    
-
     
 }
 //Starts the quiz back at the Landing page
