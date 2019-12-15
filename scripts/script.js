@@ -189,21 +189,28 @@ function all_done() {
 
 }
 //Highscore Object
-var highscore_saved_list = {}
+
 
 //Submits highscore to be stored in local storage and displayed on highscores page
 function submit_highscore() {
     //Check if there is anything in storage
+    var highscore_saved_list = {}
+    
     if (localStorage.getItem("scores") === null) { //If there isnt anything in storage
+        console.log("is not Storage")
         var initials_to_save = answer_i_e.value;
+        console.log(initials_to_save)
         highscore_saved_list[initials_to_save] = score
         console.log(highscore_saved_list)
         localStorage.setItem("scores", JSON.stringify(highscore_saved_list));
     }
     
-    else { //If there is something in storage
-        var highscore_saved_list = JSON.parse(localStorage.getItem("scores"));
+    else if (localStorage.getItem("scores") !== null) { //If there is something in storage
+        console.log("is Storage")
         var initials_to_save = answer_i_e.value;
+        console.log(initials_to_save)
+        var highscore_saved_list = JSON.parse(localStorage.getItem("scores"));
+        console.log(highscore_saved_list)
         highscore_saved_list[initials_to_save] = score
         console.log(highscore_saved_list)
         localStorage.setItem("scores", JSON.stringify(highscore_saved_list));
