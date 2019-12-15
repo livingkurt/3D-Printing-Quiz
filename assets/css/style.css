@@ -56,6 +56,13 @@ body {
     padding: 10px;
     border-radius: 10px;
 }
+.buttons:hover {
+    background-color: rgb(97, 67, 97);
+}
+
+.choice_buttons:hover {
+    background-color: rgb(97, 67, 97);
+}
 
 #start_over_b {
     display: none;

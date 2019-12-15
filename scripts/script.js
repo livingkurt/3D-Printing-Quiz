@@ -44,11 +44,6 @@ var question_5_choice_list = ["0.25mm", "0.4mm", "0.6mm", "0.8mm"];
 var all_choices_list = [question_1_choice_list, question_2_choice_list, question_3_choice_list, question_4_choice_list, question_5_choice_list]
 var all_buttons_list = [choice_1_b_e, choice_2_b_e, choice_3_b_e, choice_4_b_e]
 
-
-
-
-
-
 //Start Question count from 0
 var question_num = 0
 
