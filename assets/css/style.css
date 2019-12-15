@@ -94,7 +94,11 @@ body {
     
 }
 
-
+#highscores_b_g {
+    display: none;
+    flex-direction: row;
+    /* justify-content: center; */
+}
 
 #multiple_choice_ul {
     display: none;

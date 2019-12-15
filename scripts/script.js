@@ -13,6 +13,7 @@ var enter_initials_l_e = document.getElementById("enter_initials_l")
 
 //Lists
 var multiple_choice_ul_e = document.getElementById("multiple_choice_ul")
+var saved_highscores_ul_e = document.getElementById("saved_highscores_ul")
 
 //Inputs
 var answer_i_e = document.getElementById("answer_i")
@@ -27,6 +28,10 @@ var choice_1_b_e = document.getElementById("choice_1_b")
 var choice_2_b_e = document.getElementById("choice_2_b")
 var choice_3_b_e = document.getElementById("choice_3_b")
 var choice_4_b_e = document.getElementById("choice_4_b")
+
+//Groups
+var highscores_b_g_e = document.getElementById("highscores_b_g")
+
 
 //Questions
 var questions_list = ["What does FDM stand for when it refers to FDM 3D Printing?", "What part of the printer melts the plastic to be extruded?", "What is the most common filament type?", "What file type does a 3D printer read?", "What is the most common nozzle size?"];
@@ -62,7 +67,7 @@ document.addEventListener("keypress", function (e) {
 //Functions
 
 //Landing Page
-function start_quiz(event, ){
+function start_quiz(){
     //Change Text
     title_h_e.innerHTML = questions_list[question_num];
     //Hide Elements
@@ -113,6 +118,7 @@ function is_correct(event) {
         // console.log(answer_list[question_num])
         if (user_choice === answer_list[question_num]){
             console.log("correct")
+
         }
         else {
             console.log("Incorrect")
@@ -143,8 +149,17 @@ function all_done() {
 
 //Shows Highscores page from local storage
 function high_scores() {
+    title_h_e.setAttribute("style", "margin: 0px; justify-content: flex-start;");
     title_h_e.innerHTML = "High Scores";
+    description_p_e.setAttribute("style", "display: none;");
+    welcome_h_e.setAttribute("style", "display: none;");
+    multiple_choice_ul_e.setAttribute("style", "display: none;")
+    start_quiz_b_e.setAttribute("style", "display: none;");
+    start_over_b_e.setAttribute("style", "display: flex;");
+    clear_highscores_b_e.setAttribute("style", "display: flex;");
+    highscores_b_g_e.setAttribute("style", "display: flex;");
     // submit_score_b_e.setAttribute("style", "display: block;");
+
     
 }
 //Submits highscore to be stored in local storage and displayed on highscores page
@@ -154,6 +169,8 @@ function submit_highscore() {
 //Deletes highscores from local storage
 function clear_highscores() {
     title_h_e.innerHTML = "High Scores";
+    
+
     
 }
 //Starts the quiz back at the Landing page
