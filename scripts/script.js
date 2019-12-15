@@ -29,16 +29,16 @@ var choice_3_b_e = document.getElementById("choice_3_b")
 var choice_4_b_e = document.getElementById("choice_4_b")
 
 //Questions
-var questions_list = ["What does FDM stand for when it refers to FDM 3D Printing?", "What part of the printer melts the plastic to be extruded?", "What is the most common filament type?", "Do you need a heated bed for all types of filaments?", "What is the most common nozzle size?"];
+var questions_list = ["What does FDM stand for when it refers to FDM 3D Printing?", "What part of the printer melts the plastic to be extruded?", "What is the most common filament type?", "What file type does a 3D printer read?", "What is the most common nozzle size?"];
 
 //Correct Answers
-var answer_list = ["Fused Deposition Model", "Hotend", "PLA", "No", "0.4 mm"];
+var answer_list = ["Fused Deposition Model", "Hotend", "PLA", "No", "0.4mm"];
 
 //Multiple Choice Arrays
 var question_1_choice_list = ["Fused Deposition Model", "Formal Development Methodology", "Finite-Difference Method", "Fused Deposition Manufacturing"];
 var question_2_choice_list = ["Extruder", "Hotend", "PTFE Tube", "Heated Bed"];
 var question_3_choice_list = ["ABS", "PETG", "PLA", "ASA"];
-var question_4_choice_list = ["Yes", "No"];
+var question_4_choice_list = [".stl", ".gcode", ".f3d", ".obj"];
 var question_5_choice_list = ["0.25mm", "0.4mm", "0.6mm", "0.8mm"];
 //Grouped Array
 var all_choices_list = [question_1_choice_list, question_2_choice_list, question_3_choice_list, question_4_choice_list, question_5_choice_list]
