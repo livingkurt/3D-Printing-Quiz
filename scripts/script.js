@@ -32,7 +32,7 @@ var choice_4_b_e = document.getElementById("choice_4_b")
 var questions_list = ["What does FDM stand for when it refers to FDM 3D Printing?", "What part of the printer melts the plastic to be extruded?", "What is the most common filament type?", "Do you need a heated bed for all types of filaments?", "What is the most common nozzle size?"];
 
 //Correct Answers
-var answer_list = ["Fused Depsoition Model", "Hotend", "PLA", "No", "0.4 mm"];
+var answer_list = ["Fused Deposition Model", "Hotend", "PLA", "No", "0.4 mm"];
 
 //Multiple Choice Arrays
 var question_1_choice_list = ["Fused Deposition Model", "Formal Development Methodology", "Finite-Difference Method", "Fused Deposition Manufacturing"];
@@ -50,6 +50,7 @@ var question_num = 0
 //Event Listeners
 start_quiz_b_e.addEventListener("click", start_quiz)
 view_highscores_b_e.addEventListener("click", high_scores)
+multiple_choice_ul_e.addEventListener("click", is_correct)
 document.addEventListener("keypress", function (e) {
     if (e.key === 'Enter') {
         console.log("enter")
@@ -104,6 +105,24 @@ function next_question() {
         }
         
 }
+
+function is_correct(event) {
+    if (event.target.matches("button")){
+        // console.log(event.target.matches("button"))
+        var user_choice = event.target.innerHTML.substring(3, )
+        // console.log(answer_list[question_num])
+        if (user_choice === answer_list[question_num]){
+            console.log("correct")
+        }
+        else {
+            console.log("Incorrect")
+        }
+
+    }
+    
+}
+
+
 //End Quiz, allows you to type in your initials and submit your score to be saved to local storage
 function all_done() {
     //Hide Elements
