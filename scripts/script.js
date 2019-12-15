@@ -10,6 +10,7 @@ var description_p_e = document.getElementById("description_p")
 var time_l_e = document.getElementById("time_l")
 var final_score_l_e = document.getElementById("final_score_l")
 var enter_initials_l_e = document.getElementById("enter_initials_l")
+var correct_incorrect_l_e = document.getElementById("correct_incorrect_l")
 
 //Lists
 var multiple_choice_ul_e = document.getElementById("multiple_choice_ul")
@@ -32,6 +33,8 @@ var choice_4_b_e = document.getElementById("choice_4_b")
 //Groups
 var highscores_b_g_e = document.getElementById("highscores_b_g")
 
+//Line
+var line_hr_e = document.getElementById("line_hr")
 
 //Questions
 var questions_list = ["What does FDM stand for when it refers to FDM 3D Printing?", "What part of the printer melts the plastic to be extruded?", "What is the most common filament type?", "What file type does a 3D printer read?", "What is the most common nozzle size?"];
@@ -116,12 +119,15 @@ function is_correct(event) {
         // console.log(event.target.matches("button"))
         var user_choice = event.target.innerHTML.substring(3, )
         // console.log(answer_list[question_num])
+        line_hr_e.setAttribute("style", "display: flex;")
         if (user_choice === answer_list[question_num]){
             console.log("correct")
+            correct_incorrect_l_e.innerHTML = "Correct!"
 
         }
         else {
             console.log("Incorrect")
+            correct_incorrect_l_e.innerHTML = "Incorrect!"
         }
 
     }

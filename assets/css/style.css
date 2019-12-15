@@ -64,6 +64,14 @@ body {
     background-color: rgb(97, 67, 97);
 }
 
+.buttons:focus {
+    outline:0;
+}
+
+.choice_buttons:focus {
+    outline:0;
+}
+
 #start_over_b {
     display: none;
 }
@@ -152,3 +160,16 @@ p {
 ul {
     list-style-type: none;
   }
+
+hr {
+    border: 0;
+    display: none;
+    width: 100%;               
+    background-color:rgb(199, 199, 199);
+    height: 1px;
+}
+
+#correct_incorrect_l {
+    color:rgb(143, 142, 142);
+    font-style: italic;
+}
