@@ -84,10 +84,10 @@ function change_choices(a, b){
     // bb = b[question_num]
     // for (var i = 0; i < 3; i++){
     aa = a[question_num]
-    choice_1_b_e.innerHTML = aa[0];
-    choice_2_b_e.innerHTML = aa[1];
-    choice_3_b_e.innerHTML = aa[2];
-    choice_4_b_e.innerHTML = aa[3];
+    choice_1_b_e.innerHTML = "1. " + aa[0];
+    choice_2_b_e.innerHTML = "2. " + aa[1];
+    choice_3_b_e.innerHTML = "3. " + aa[2];
+    choice_4_b_e.innerHTML = "4. " + aa[3];
     
 }
 //Added all of the multiple choice answers arrays to its own array, then made a function that 
