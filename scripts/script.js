@@ -91,7 +91,7 @@ function start_quiz(){
     setTime();
 
 }
-function change_choices(a, b){
+function change_choices(a){
     // for (var i = 0; i < 3; i++){
     //     a[0]
     // }
@@ -215,12 +215,41 @@ function submit_highscore() {
         console.log(highscore_saved_list)
         localStorage.setItem("scores", JSON.stringify(highscore_saved_list));
     }
+    populate_list(highscore_saved_list);
 }
 
-function populate_list() {
+function populate_list(a) {
+    // console.log("populate list")
+    var highscore_length = Object.keys(a).length
+    var keys = Object.keys(a);
+    var values = Object.values(a);
+    // console.log(highscore_length)
+    console.log(keys)
+    console.log(values)
+    for (var i = 0; i < highscore_length; i++) {
+        // var highscore_length = Object.keys(a).length
+        // console.log(i)
+        var user_name = keys[i];
+        var user_score = values[i];
+        // console.log(highscore)
+        // console.log()
+        // console.log(user_name + " - " + user_score)
+        var user_data = user_name + " - " + user_score
+        var li = document.createElement("li");
+        li.textContent = user_data;
+        li.setAttribute("data-index", i);
     
+        saved_highscores_ul_e.setAttribute("style", "display: flex;");
+        saved_highscores_ul_e.appendChild(li);
+    // aa = a[question_num]
+    // choice_1_b_e.innerHTML = "1. " + aa[0];
+    // choice_2_b_e.innerHTML = "2. " + aa[1];
+    // choice_3_b_e.innerHTML = "3. " + aa[2];
+    // choice_4_b_e.innerHTML = "4. " + aa[3];
+    }
 }
 
+    
 //Shows Highscores page from local storage
 function high_scores() {
     //Hide Elements
