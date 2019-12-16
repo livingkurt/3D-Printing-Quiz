@@ -63,6 +63,11 @@ body {
 .choice_buttons:hover {
     background-color: rgb(97, 67, 97);
 }
+#space_li{
+    display: none;
+    height: 60px;
+}
+    
 
 .buttons:focus {
     outline:0;

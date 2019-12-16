@@ -15,6 +15,8 @@ var correct_incorrect_l_e = document.getElementById("correct_incorrect_l")
 //Lists
 var multiple_choice_ul_e = document.getElementById("multiple_choice_ul")
 var saved_highscores_ul_e = document.getElementById("saved_highscores_ul")
+var space_li_e = document.getElementById("space_li")
+
 
 //Inputs
 var answer_i_e = document.getElementById("answer_i")
@@ -59,7 +61,7 @@ var question_num = 0
 
 //Event Listeners
 start_quiz_b_e.addEventListener("click", start_quiz)
-view_highscores_b_e.addEventListener("click", high_scores)
+view_highscores_b_e.addEventListener("click", submit_highscore)
 multiple_choice_ul_e.addEventListener("click", is_correct)
 document.addEventListener("keypress", function (e) {
     if (e.key === 'Enter') {
@@ -229,24 +231,36 @@ function populate_list(a) {
     for (var i = 0; i < highscore_length; i++) {
         // var highscore_length = Object.keys(a).length
         // console.log(i)
+        // if (user_name === undefined || user_name === null)
+
+        // else {
         var user_name = keys[i];
         var user_score = values[i];
+        var num = i + 2
         // console.log(highscore)
         // console.log()
         // console.log(user_name + " - " + user_score)
-        var user_data = user_name + " - " + user_score
+        var user_data = (i + 1) + ". " + user_name.toUpperCase() + " - " + user_score
+        
         var li = document.createElement("li");
         li.textContent = user_data;
         li.setAttribute("data-index", i);
-    
+        li.setAttribute("style", "background-color: rgb(204, 174, 238); padding: 5px; border-top: 1px solid white; border-bottom: 1px solid white");
+        // li.setAttribute("style", "padding: 5px 5px 5px 0px;");
+        // li.setAttribute("style", "border-top-width: 2px; border-top-style: solid; border-top-color: white;");
+        // li.setAttribute("style", "border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: white;");
+        // li.setAttribute("style", "border-bottom: 2px solid white;");
+        // li.setAttribute("style", "padding: 5px;");
         saved_highscores_ul_e.setAttribute("style", "display: flex;");
         saved_highscores_ul_e.appendChild(li);
+     
     // aa = a[question_num]
     // choice_1_b_e.innerHTML = "1. " + aa[0];
     // choice_2_b_e.innerHTML = "2. " + aa[1];
     // choice_3_b_e.innerHTML = "3. " + aa[2];
     // choice_4_b_e.innerHTML = "4. " + aa[3];
     }
+    high_scores();
 }
 
     
@@ -274,6 +288,12 @@ function high_scores() {
 function clear_highscores() {
     // title_h_e.innerHTML = "High Scores";
     localStorage.clear();
+    saved_highscores_ul_e.setAttribute("style", "display: none;");
+    final_score_l_e.setAttribute("style", "display: flex;");
+    final_score_l_e.textContent = "Highscores will populate here when you complete the quiz";
+    final_score_l_e.setAttribute("style", "background-color: rgb(204, 174, 238); padding: 5px; border-top: 1px solid white; border-bottom: 1px solid white; margin: 16px 0px;");
+
+    // title_h_e.setAttribute("style", "margin-bottom: 50px;");
     
 }
 //Starts the quiz back at the Landing page
