@@ -11,7 +11,7 @@ var time_l_e = document.getElementById("time_l")
 var final_score_l_e = document.getElementById("final_score_l")
 var enter_initials_l_e = document.getElementById("enter_initials_l")
 var correct_incorrect_l_e = document.getElementById("correct_incorrect_l")
-var negative_5_l_e = document.getElementById("negative_5_l")
+var negative_5_l_e = document.getElementById("negative_5_l") 
 
 
 //Lists
@@ -142,7 +142,7 @@ function is_correct(event) {
 
             setTimeout(next_question, 1000);
             // next_question();
-            setTimeout(next_question, 1000);
+            // setTimeout(next_question, 1000);
             // negative_5_l_e.setAttribute("style", "-webkit-animation: fadeinout 3s linear forwards; animation: fadeinout 3s linear forwards;")
             
     
