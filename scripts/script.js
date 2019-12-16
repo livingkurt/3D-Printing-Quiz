@@ -171,9 +171,19 @@ function you_lose() {
     title_h_e.innerHTML = "You Lose"
     final_score_l_e.innerHTML = "You must complete the quiz in the amount of time given";
     final_score_l_e.setAttribute("style", "display: flex; justify-content: center;");
+    line_hr_e.setAttribute("style", "display: flex;");
+    highscores_b_g_e.setAttribute("style", "display: flex; justify-content: center;");
     start_over_b_e.setAttribute("style", "display: flex;");
     multiple_choice_ul_e.setAttribute("style", "display: none;")
     correct_incorrect_l_e.setAttribute("style", "display: none;")
+    // var start_over_b_f = document.createElement("button");
+    // start_over_b_f.textContent = "Start Over"
+    
+    // // start_over_b_f.setAttribute("data-index", i);
+    // // li.setAttribute("style", "background-color: rgb(204, 174, 238); padding: 5px; border-top: 1px solid white; border-bottom: 1px solid white");
+    // start_over_b_f.setAttribute("style", "display: flex;");
+    // start_over_b_f.setAttribute("class", "buttons");
+    // highscores_b_g.appendChild(start_over_b_f);
 }
 
 //End Quiz, allows you to type in your initials and submit your score to be saved to local storage
