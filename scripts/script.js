@@ -11,6 +11,8 @@ var time_l_e = document.getElementById("time_l")
 var final_score_l_e = document.getElementById("final_score_l")
 var enter_initials_l_e = document.getElementById("enter_initials_l")
 var correct_incorrect_l_e = document.getElementById("correct_incorrect_l")
+var negative_5_l_e = document.getElementById("negative_5_l")
+
 
 //Lists
 var multiple_choice_ul_e = document.getElementById("multiple_choice_ul")
@@ -129,27 +131,34 @@ function is_correct(event) {
             score = score + 10;
             console.log(score)
             // await delay(2000);
-            next_question();
-            // setTimeout(next_question, 1000);
+            // next_question();
+            setTimeout(next_question, 1000);
 
         }
         else if (user_choice !== answer_list[question_num]){
             console.log("Incorrect")
             correct_incorrect_l_e.innerHTML = "Incorrect!"
-            score = score - 5;
+            secondsLeft = secondsLeft - 5;
+            
             console.log(score)
             // await delay(2000);
-            next_question();
-            // setTimeout(next_question, 1000);
+            // next_question();
+            setTimeout(next_question, 1000);
+            // next_question();
+            // negative_5_l_e.setAttribute("style", "display: flex;");
+            // negative_5_l_e.setAttribute("style", "display: none;");
+            
         }
     }
 }
 
 
+
+
 // var timeEl = document.querySelector(".time");
 // var mainEl = document.getElementById("main");
 
-var secondsLeft = 5;
+var secondsLeft = 30;
 
 function setTime() {
     var timerInterval = setInterval(function() {
@@ -174,6 +183,7 @@ function you_lose() {
     line_hr_e.setAttribute("style", "display: flex;");
     highscores_b_g_e.setAttribute("style", "display: flex; justify-content: center;");
     start_over_b_e.setAttribute("style", "display: flex;");
+    start_over_b_e.textContent = "Start Over"
     multiple_choice_ul_e.setAttribute("style", "display: none;")
     correct_incorrect_l_e.setAttribute("style", "display: none;")
     // var start_over_b_f = document.createElement("button");
@@ -306,9 +316,10 @@ function clear_highscores() {
     // title_h_e.innerHTML = "High Scores";
     localStorage.clear();
     saved_highscores_ul_e.setAttribute("style", "display: none;");
-    final_score_l_e.setAttribute("style", "display: flex;");
+    
     final_score_l_e.textContent = "Highscores will populate here when you complete the quiz";
     final_score_l_e.setAttribute("style", "background-color: rgb(204, 174, 238); padding: 5px; border-top: 1px solid white; border-bottom: 1px solid white; margin: 16px 0px;");
+    final_score_l_e.setAttribute("style", "display: flex;");
 
     // title_h_e.setAttribute("style", "margin-bottom: 50px;");
     
