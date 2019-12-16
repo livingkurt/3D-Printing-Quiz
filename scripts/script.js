@@ -93,21 +93,15 @@ function start_quiz(){
     setTime();
 
 }
+//Added all of the multiple choice answers arrays to its own array, then made a function that 
 function change_choices(a){
-    // for (var i = 0; i < 3; i++){
-    //     a[0]
-    // }
-    
-    // bb = b[question_num]
-    // for (var i = 0; i < 3; i++){
     aa = a[question_num]
     choice_1_b_e.innerHTML = "1. " + aa[0];
     choice_2_b_e.innerHTML = "2. " + aa[1];
     choice_3_b_e.innerHTML = "3. " + aa[2];
     choice_4_b_e.innerHTML = "4. " + aa[3];
-    
 }
-//Added all of the multiple choice answers arrays to its own array, then made a function that 
+
 //Questions
 function next_question() {
     question_num++
@@ -155,25 +149,37 @@ function is_correct(event) {
 // var timeEl = document.querySelector(".time");
 // var mainEl = document.getElementById("main");
 
-var secondsLeft = 60;
+var secondsLeft = 5;
 
 function setTime() {
-  var timerInterval = setInterval(function() {
+    var timerInterval = setInterval(function() {
+    window.timerInterval = timerInterval
     secondsLeft--;
     time_l_e.textContent = "Time: " + secondsLeft;
-
+    
     if(secondsLeft === 0) {
-      clearInterval(timerInterval);
+        clearInterval(timerInterval);
+        // clearInterval(window.timerInterval)
+        you_lose();
     //   sendMessage();
     }
 
   }, 1000);
 }
 
+function you_lose() {
+    title_h_e.innerHTML = "You Lose"
+    final_score_l_e.innerHTML = "You must complete the quiz in the amount of time given";
+    final_score_l_e.setAttribute("style", "display: flex; justify-content: center;");
+    start_over_b_e.setAttribute("style", "display: flex;");
+    multiple_choice_ul_e.setAttribute("style", "display: none;")
+    correct_incorrect_l_e.setAttribute("style", "display: none;")
+}
 
 //End Quiz, allows you to type in your initials and submit your score to be saved to local storage
 function all_done() {
     //Hide Elements
+    
     multiple_choice_ul_e.setAttribute("style", "display: none;")
     line_hr_e.setAttribute("style", "display: none;")
     correct_incorrect_l_e.setAttribute("style", "display: none;")
@@ -187,6 +193,7 @@ function all_done() {
     final_score_l_e.setAttribute("style", "display: flex; justify-content: flex-start;");
     //Change Text
     final_score_l_e.innerHTML = "Your final score is: " + score;
+    clearInterval(window.timerInterval);
     
 
 }
