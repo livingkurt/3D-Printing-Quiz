@@ -13,11 +13,46 @@ body {
 
 }
 #negative_5_l_e {
-    display: none;
-    /* align-items: flex-start; */
+    display: flex;
     justify-content: flex-end;
     font-size: 20px;
+    opacity: 0;
+    /* -webkit-animation: fadeinout 3s linear forwards; */
+    /* animation: fadeinout 3s linear forwards; */
 }
+
+@-webkit-keyframes fadeinout {
+    0%,100% { opacity: 0; }
+    50% { opacity: 1; }
+  }
+  
+  @keyframes fadeinout {
+    0%,100% { opacity: 0; }
+    50% { opacity: 1; }
+  }
+
+
+/* #elem {
+    background-color: orange;
+    width: 100px;
+    height: 100px;
+    opacity: 0;
+  } */
+/* #negative_5_l_e.show {
+    animation: anime 1s 1;
+}
+@keyframes anime {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+} */
+
 #sub_container {
     display: flex;
     flex-direction: column;

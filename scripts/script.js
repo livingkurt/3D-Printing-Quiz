@@ -90,7 +90,6 @@ function start_quiz(){
     li_e.innerHTML = "li";
     //Show Elements
     multiple_choice_ul_e.setAttribute("style", "display: flex;");
-    // change_choices(question_1_choice_list, question_2_choice_list, question_3_choice_list, question_4_choice_list, question_5_choice_list)
     change_choices(all_choices_list, all_buttons_list)
     setTime();
 
@@ -139,14 +138,15 @@ function is_correct(event) {
             console.log("Incorrect")
             correct_incorrect_l_e.innerHTML = "Incorrect!"
             secondsLeft = secondsLeft - 5;
-            
             console.log(score)
-            // await delay(2000);
-            // next_question();
+
             setTimeout(next_question, 1000);
             // next_question();
-            // negative_5_l_e.setAttribute("style", "display: flex;");
-            // negative_5_l_e.setAttribute("style", "display: none;");
+            setTimeout(next_question, 1000);
+            // negative_5_l_e.setAttribute("style", "-webkit-animation: fadeinout 3s linear forwards; animation: fadeinout 3s linear forwards;")
+            
+    
+
             
         }
     }
@@ -186,14 +186,6 @@ function you_lose() {
     start_over_b_e.textContent = "Start Over"
     multiple_choice_ul_e.setAttribute("style", "display: none;")
     correct_incorrect_l_e.setAttribute("style", "display: none;")
-    // var start_over_b_f = document.createElement("button");
-    // start_over_b_f.textContent = "Start Over"
-    
-    // // start_over_b_f.setAttribute("data-index", i);
-    // // li.setAttribute("style", "background-color: rgb(204, 174, 238); padding: 5px; border-top: 1px solid white; border-bottom: 1px solid white");
-    // start_over_b_f.setAttribute("style", "display: flex;");
-    // start_over_b_f.setAttribute("class", "buttons");
-    // highscores_b_g.appendChild(start_over_b_f);
 }
 
 //End Quiz, allows you to type in your initials and submit your score to be saved to local storage
@@ -256,36 +248,16 @@ function populate_list(a) {
     console.log(keys)
     console.log(values)
     for (var i = 0; i < highscore_length; i++) {
-        // var highscore_length = Object.keys(a).length
-        // console.log(i)
-        // if (user_name === undefined || user_name === null)
-
-        // else {
         var user_name = keys[i];
         var user_score = values[i];
         var num = i + 2
-        // console.log(highscore)
-        // console.log()
-        // console.log(user_name + " - " + user_score)
         var user_data = (i + 1) + ". " + user_name.toUpperCase() + " - " + user_score
-        
         var li = document.createElement("li");
         li.textContent = user_data;
         li.setAttribute("data-index", i);
         li.setAttribute("style", "background-color: rgb(204, 174, 238); padding: 5px; border-top: 1px solid white; border-bottom: 1px solid white");
-        // li.setAttribute("style", "padding: 5px 5px 5px 0px;");
-        // li.setAttribute("style", "border-top-width: 2px; border-top-style: solid; border-top-color: white;");
-        // li.setAttribute("style", "border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: white;");
-        // li.setAttribute("style", "border-bottom: 2px solid white;");
-        // li.setAttribute("style", "padding: 5px;");
         saved_highscores_ul_e.setAttribute("style", "display: flex;");
         saved_highscores_ul_e.appendChild(li);
-     
-    // aa = a[question_num]
-    // choice_1_b_e.innerHTML = "1. " + aa[0];
-    // choice_2_b_e.innerHTML = "2. " + aa[1];
-    // choice_3_b_e.innerHTML = "3. " + aa[2];
-    // choice_4_b_e.innerHTML = "4. " + aa[3];
     }
     high_scores();
 }
@@ -329,74 +301,3 @@ function start_over() {
     location.reload();
     
 }
-
-
-
-
-
-
-
-// function load_from_storage(){
-//     // localStorage.getItem(initials_to_save, JSON.parse(score));
-//     var stored_highscores = JSON.parse(localStorage.getItem("object"));
-//     console.log(stored_highscores)
-//     // var init = highscore_saved_list[initials_to_save]
-//     var result = Object.keys(highscore_saved_list).map(function(key) {
-//         return [Number(key), highscore_saved_list[key]];
-//       });
-//     console.log(result)
-
-// }
-
-// function load_from_storage() {
-//     // Get stored todos from localStorage
-//     // Parsing the JSON string to an object
-//     var stored_highscores = JSON.parse(localStorage.getItem("object"));
-  
-//     // If todos were retrieved from localStorage, update the todos array to it
-//     if (stored_highscores !== null) {
-//       todos = stored_highscores;
-//     }
-  
-//     // Render todos to the DOM
-//     renderTodos();
-//   }
-
-
-// function renderTodos() {
-//     // Clear todoList element and update todoCountSpan
-//     todoList.innerHTML = "";
-//     todoCountSpan.textContent = todos.length;
-
-//     // Render a new li for each todo
-//     for (var i = 0; i < todos.length; i++) {
-//         var todo = todos[i];
-
-//         var li = saved_highscores_ul_e.createElement("li");
-//         li.textContent = todo;
-//         li.setAttribute("data-index", i);
-
-//         // var button = document.createElement("button");
-//         // button.textContent = "Complete";
-
-//         // li.appendChild(button);
-//         todoList.appendChild(li);
-//     }
-// }
-
-
-
-
-// //Highscore Object
-// var highscores_list = {}
-// //Submits highscore to be stored in local storage and displayed on highscores page
-// function submit_highscore() {
-
-//     var initials_to_save = answer_i_e.value;
-//     highscores_list[initials_to_save] = score;
-//     console.log(highscores_list)
-
-//     localStorage.setItem("scores", JSON.stringify(saved_highscores));
-
-    
-// }
