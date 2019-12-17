@@ -9,6 +9,8 @@ var description_p_e = document.getElementById("description_p")
 //Labels
 var time_l_e = document.getElementById("time_l")
 var final_score_l_e = document.getElementById("final_score_l")
+var empty_highscores_table_l_e = document.getElementById("empty_highscores_table_l")
+
 var enter_initials_l_e = document.getElementById("enter_initials_l")
 var correct_incorrect_l_e = document.getElementById("correct_incorrect_l")
 var negative_5_l_e = document.getElementById("negative_5_l") 
@@ -63,7 +65,7 @@ var question_num = 0
 
 //Event Listeners
 start_quiz_b_e.addEventListener("click", start_quiz)
-view_highscores_b_e.addEventListener("click", submit_highscore)
+view_highscores_b_e.addEventListener("click", view_highscores)
 multiple_choice_ul_e.addEventListener("click", is_correct)
 document.addEventListener("keypress", function (e) {
     if (e.key === 'Enter') {
@@ -142,26 +144,15 @@ function is_correct(event) {
         else if (user_choice !== answer_list[question_num]){
             console.log("Incorrect")
             correct_incorrect_l_e.innerHTML = "Incorrect!"
-            secondsLeft = secondsLeft - 5;
+            window.secondsLeft = secondsLeft - 5;
             console.log(score)
 
             setTimeout(next_question, 1000);
-            // next_question();
-            // setTimeout(next_question, 1000);
-            // negative_5_l_e.setAttribute("style", "-webkit-animation: fadeinout 3s linear forwards; animation: fadeinout 3s linear forwards;")
-            
-    
-
             
         }
     }
 }
 
-
-
-
-// var timeEl = document.querySelector(".time");
-// var mainEl = document.getElementById("main");
 
 var secondsLeft = 30;
 
@@ -178,10 +169,7 @@ function setTime() {
             secondsLeft = 0;
             time_l_e.textContent = "Time: " + secondsLeft;
         }
-        
         you_lose();
-        
-    //   sendMessage();
     }
 
   }, 1000);
@@ -218,6 +206,7 @@ function all_done() {
     title_h_e.setAttribute("style", "margin: 0px; justify-content: flex-start;");
     final_score_l_e.setAttribute("style", "display: flex; justify-content: flex-start;");
     //Change Text
+    score = parseInt(score) + parseInt(secondsLeft)
     final_score_l_e.innerHTML = "Your final score is: " + score;
     clearInterval(window.timerInterval);
     
@@ -225,20 +214,19 @@ function all_done() {
 }
 //Highscore Object
 
-
-//Submits highscore to be stored in local storage and displayed on highscores page
-function submit_highscore() {
-    //Check if there is anything in storage
-
+function view_highscores(){
     var highscore_saved_list = {}
+    
     
     if (localStorage.getItem("scores") === null) { //If there isnt anything in storage
         console.log("is not Storage")
-        var initials_to_save = answer_i_e.value;
-        console.log(initials_to_save)
-        highscore_saved_list[initials_to_save] = score
-        console.log(highscore_saved_list)
-        localStorage.setItem("scores", JSON.stringify(highscore_saved_list));
+        saved_highscores_ul_e.setAttribute("style", "display: none;");
+        empty_highscores_table_l_e.textContent = "Highscores will populate here when you complete the quiz";
+        empty_highscores_table_l_e.setAttribute("style", "display: flex;");
+        empty_highscores_table_l_e.setAttribute("style", "display: flex; background-color: rgb(1, 10, 49); padding: 5px; border: 1px solid rgb(1, 12, 49); margin: 16px 0px; color: white; border-radius: 10px;");
+        
+
+        
     }
     
     else if (localStorage.getItem("scores") !== null) { //If there is something in storage
@@ -247,20 +235,45 @@ function submit_highscore() {
         console.log(initials_to_save)
         var highscore_saved_list = JSON.parse(localStorage.getItem("scores"));
         console.log(highscore_saved_list)
-        highscore_saved_list[initials_to_save] = score
+    }
+    populate_list(highscore_saved_list);
+}
+
+//Submits highscore to be stored in local storage and displayed on highscores page
+function submit_highscore() {
+    //Check if there is anything in storage
+
+    var highscore_saved_list = {}
+    
+    
+    if (localStorage.getItem("scores") === null) { //If there isnt anything in storage
+        console.log("is not Storage")
+        var initials_to_save = answer_i_e.value;
+        console.log(initials_to_save)
+            highscore_saved_list[initials_to_save] = score
+            console.log(highscore_saved_list)
+            localStorage.setItem("scores", JSON.stringify(highscore_saved_list));
+    }
+    
+    else if (localStorage.getItem("scores") !== null) { //If there is something in storage
+        console.log("is Storage")
+        var initials_to_save = answer_i_e.value;
+        console.log(initials_to_save)
+        var highscore_saved_list = JSON.parse(localStorage.getItem("scores"));
         console.log(highscore_saved_list)
-        localStorage.setItem("scores", JSON.stringify(highscore_saved_list));
+        // if (initials_to_save !== undefined){
+            highscore_saved_list[initials_to_save] = score
+            console.log(highscore_saved_list)
+            localStorage.setItem("scores", JSON.stringify(highscore_saved_list));
     }
     populate_list(highscore_saved_list);
 }
 
 function populate_list(a) {
-    // console.log("populate list")
     $("#saved_highscores_ul").empty();
     var highscore_length = Object.keys(a).length
     var keys = Object.keys(a);
     var values = Object.values(a);
-    // console.log(highscore_length)
     console.log(keys)
     console.log(values)
     for (var i = 0; i < highscore_length; i++) {
@@ -305,9 +318,9 @@ function clear_highscores() {
     localStorage.clear();
     saved_highscores_ul_e.setAttribute("style", "display: none;");
     
-    final_score_l_e.textContent = "Highscores will populate here when you complete the quiz";
-    final_score_l_e.setAttribute("style", "background-color: rgb(1, 10, 49); padding: 5px; border: 1px solid rgb(1, 12, 49); margin: 16px 0px; color: white; border-radius: 10px;");
-    final_score_l_e.setAttribute("style", "display: flex;");
+    empty_highscores_table_l_e.textContent = "Highscores will populate here when you complete the quiz";
+    empty_highscores_table_l_e.setAttribute("style", "background-color: rgb(1, 10, 49); padding: 5px; border: 1px solid rgb(1, 12, 49); margin: 16px 0px; color: white; border-radius: 10px;");
+    final_sempty_highscores_table_l_ecore_l_e.setAttribute("style", "display: flex;");
 
     // title_h_e.setAttribute("style", "margin-bottom: 50px;");
     
