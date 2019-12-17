@@ -63,7 +63,7 @@ var question_num = 0
 
 //Event Listeners
 start_quiz_b_e.addEventListener("click", start_quiz)
-view_highscores_b_e.addEventListener("click", populate_list)
+view_highscores_b_e.addEventListener("click", submit_highscore)
 multiple_choice_ul_e.addEventListener("click", is_correct)
 document.addEventListener("keypress", function (e) {
     if (e.key === 'Enter') {
@@ -171,10 +171,16 @@ function setTime() {
     secondsLeft--;
     time_l_e.textContent = "Time: " + secondsLeft;
     
-    if(secondsLeft === 0) {
+    if(secondsLeft <= 0) {
         clearInterval(timerInterval);
         // clearInterval(window.timerInterval)
+        if (secondsLeft < 0 ) {
+            secondsLeft = 0;
+            time_l_e.textContent = "Time: " + secondsLeft;
+        }
+        
         you_lose();
+        
     //   sendMessage();
     }
 
@@ -188,7 +194,7 @@ function you_lose() {
     line_hr_e.setAttribute("style", "display: flex;");
     highscores_b_g_e.setAttribute("style", "display: flex; justify-content: center;");
     start_over_b_e.setAttribute("style", "display: flex;");
-    start_over_b_e.textContent = "Start Over"
+    start_over_b_e.textContent = "Start Over";
     multiple_choice_ul_e.setAttribute("style", "display: none;")
     correct_incorrect_l_e.setAttribute("style", "display: none;")
     view_highscores_b_e.setAttribute("style", "display: flex;")
@@ -201,6 +207,7 @@ function all_done() {
     multiple_choice_ul_e.setAttribute("style", "display: none;")
     line_hr_e.setAttribute("style", "display: none;")
     correct_incorrect_l_e.setAttribute("style", "display: none;")
+    start_over_b_e.setAttribute("style", "display: none;");
     //Show Elements
     title_h_e.innerHTML = "All Done!"
     answer_i_e.setAttribute("style", "display: flex;");
@@ -222,6 +229,7 @@ function all_done() {
 //Submits highscore to be stored in local storage and displayed on highscores page
 function submit_highscore() {
     //Check if there is anything in storage
+
     var highscore_saved_list = {}
     
     if (localStorage.getItem("scores") === null) { //If there isnt anything in storage
@@ -248,6 +256,7 @@ function submit_highscore() {
 
 function populate_list(a) {
     // console.log("populate list")
+    $("#saved_highscores_ul").empty();
     var highscore_length = Object.keys(a).length
     var keys = Object.keys(a);
     var values = Object.values(a);
@@ -262,7 +271,7 @@ function populate_list(a) {
         var li = document.createElement("li");
         li.textContent = user_data;
         li.setAttribute("data-index", i);
-        li.setAttribute("style", "background-color: rgb(151, 190, 224); padding: 5px; border: 1px solid rgb(1, 12, 49); color: rgb(1, 12, 49); border-radius: 10px; margin-bottom: 7px;");
+        li.setAttribute("style", "background-color: rgb(1, 10, 49); padding: 5px; border: 1px solid rgb(1, 12, 49); color: white; border-radius: 10px; margin-bottom: 7px;");
         saved_highscores_ul_e.setAttribute("style", "display: flex;"); 
         saved_highscores_ul_e.appendChild(li);
     }
@@ -297,7 +306,7 @@ function clear_highscores() {
     saved_highscores_ul_e.setAttribute("style", "display: none;");
     
     final_score_l_e.textContent = "Highscores will populate here when you complete the quiz";
-    final_score_l_e.setAttribute("style", "background-color: rgb(151, 190, 224); padding: 5px; border: 1px solid rgb(1, 12, 49); margin: 16px 0px; color: rgb(1, 12, 49); border-radius: 10px;");
+    final_score_l_e.setAttribute("style", "background-color: rgb(1, 10, 49); padding: 5px; border: 1px solid rgb(1, 12, 49); margin: 16px 0px; color: white; border-radius: 10px;");
     final_score_l_e.setAttribute("style", "display: flex;");
 
     // title_h_e.setAttribute("style", "margin-bottom: 50px;");

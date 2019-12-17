@@ -8,6 +8,7 @@
     <title>3D Pringing Quiz!</title>
     <link href="https://fonts.googleapis.com/css?family=Archivo+Black|Bungee|Gochi+Hand|Lilita+One|Quicksand|Rubik|Special+Elite&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     
 </head>
 
@@ -16,7 +17,7 @@
     <div id="container_1">
         <button id="view_highscores_b">View Highscores</button>
         <div id="sub_container">
-            <label id="time_l">Time: 60</label>
+            <label id="time_l">Time: 30</label>
             <label id="negative_5_l_e">-5</label>
         </div>  
     </div>
@@ -58,7 +59,7 @@
         <label id="final_score_l"></label>
         <div class="all_done_container">
             <label id="enter_initials_l">Enter Initials:</label>
-            <input name="initial_area" type="text" id="answer_i">
+            <input name="initial_area" maxlength = "2" type="text" id="answer_i">
             <button class="buttons" id="submit_score_b">Submit</button>
         </div>
         <button class="buttons" id="start_quiz_b">Start Quiz!</button>
