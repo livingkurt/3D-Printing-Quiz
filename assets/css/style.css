@@ -1,15 +1,32 @@
+* {
+    /* font-family: 'Lilita One', cursive; */
+    /* font-family: 'Rubik', sans-serif; */
+    font-family: 'Quicksand', sans-serif;
+}
+
+
 body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    background-color: rgb(191, 218, 253);
+    color: rgb(1, 12, 49);
+    font-family: 'Lilita One', cursive;
 }
 
 
 #container_1 {
     display: flex;
     justify-content: center;
-    font-family: "Helvetica", sans-serif;
+    /* font-family: "Helvetica", sans-serif; */
     height: 75px;
+    /* font-family: 'Lilita One', cursive; */
+    /* font-family: 'Rubik', sans-serif;
+    font-family: 'Quicksand', sans-serif;
+    font-family: 'Archivo Black', sans-serif;
+    font-family: 'Special Elite', cursive;
+    font-family: 'Bungee', cursive;
+    font-family: 'Gochi Hand', cursive; */
 
 }
 #negative_5_l_e {
@@ -67,7 +84,7 @@ body {
     margin: 0px auto;
     margin-top: 200px;
     width: 40%;
-    font-family: "Helvetica", sans-serif;
+    /* font-family: "Helvetica", sans-serif; */
 
 }
 
@@ -86,10 +103,11 @@ body {
     display: flex;
     justify-content: center;
     margin: 0px auto;
+    
 }
 
 .buttons {
-    background-color: rgb(49, 1, 49);
+    background-color: rgb(1, 12, 49);
     color: white;
     font-size: 20px;
     padding: 10px;
@@ -97,18 +115,18 @@ body {
 }
 
 .choice_buttons {
-    background-color: rgb(49, 1, 49);
+    background-color: rgb(1, 12, 49);
     color: white;
     font-size: 20px;
     padding: 10px;
     border-radius: 10px;
 }
 .buttons:hover {
-    background-color: rgb(97, 67, 97);
+    background-color: rgb(67, 72, 97);
 }
 
 .choice_buttons:hover {
-    background-color: rgb(97, 67, 97);
+    background-color: rgb(67, 72, 97);
 }
 #space_li{
     display: none;
@@ -154,11 +172,13 @@ body {
     display: flex;
     justify-content: flex-start;
     align-content: flex-start;
-    background-color: white;
+    /* background-color: white; */
     border-width: 0px;
-    color: rgb(49, 1, 49);
+    color: rgb(1, 12, 49);
     font-size: 20px;
     height: 0px;
+    background-color:rgb(191, 218, 253);
+    outline:0;
     
 }
 
@@ -196,6 +216,8 @@ body {
     font-size: 20px;
     margin: 0px 14px;
     text-transform: uppercase;
+    align-self: center;
+    height: 30px;
 }
 
 .all_done_container {
@@ -212,6 +234,7 @@ body {
     margin: 0px 0px 0px auto;
     background-color: white;
     font-size: 20px;
+    background-color: rgb(191, 218, 253);
 }
 
 p {
@@ -226,11 +249,11 @@ hr {
     border: 0;
     display: none;
     width: 100%;               
-    background-color:rgb(199, 199, 199);
+    background-color:rgb(1, 12, 49);
     height: 1px;
 }
 
 #correct_incorrect_l {
-    color:rgb(143, 142, 142);
+    color:rgb(1, 12, 49);;
     font-style: italic;
 }

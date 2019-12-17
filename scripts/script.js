@@ -63,7 +63,7 @@ var question_num = 0
 
 //Event Listeners
 start_quiz_b_e.addEventListener("click", start_quiz)
-view_highscores_b_e.addEventListener("click", submit_highscore)
+view_highscores_b_e.addEventListener("click", populate_list)
 multiple_choice_ul_e.addEventListener("click", is_correct)
 document.addEventListener("keypress", function (e) {
     if (e.key === 'Enter') {
@@ -80,6 +80,7 @@ clear_highscores_b_e.addEventListener("click", clear_highscores)
 
 //Landing Page
 function start_quiz(){
+    view_highscores_b_e.setAttribute("style", "display: none;")
     //Change Text
     title_h_e.innerHTML = questions_list[question_num];
     //Hide Elements
@@ -105,6 +106,9 @@ function change_choices(a){
 
 //Questions
 function next_question() {
+    
+    line_hr_e.setAttribute("style", "display: none;")
+    correct_incorrect_l_e.setAttribute("style", "display: none;")
     question_num++
     //Change Text
     title_h_e.innerHTML = questions_list[question_num];
@@ -124,6 +128,7 @@ function is_correct(event) {
         var user_choice = event.target.innerHTML.substring(3, )
         // console.log(answer_list[question_num])
         line_hr_e.setAttribute("style", "display: flex;")
+        correct_incorrect_l_e.setAttribute("style", "display: flex;")
         if (user_choice === answer_list[question_num]){
             console.log("correct")
             correct_incorrect_l_e.innerHTML = "Correct!"
@@ -186,6 +191,7 @@ function you_lose() {
     start_over_b_e.textContent = "Start Over"
     multiple_choice_ul_e.setAttribute("style", "display: none;")
     correct_incorrect_l_e.setAttribute("style", "display: none;")
+    view_highscores_b_e.setAttribute("style", "display: flex;")
 }
 
 //End Quiz, allows you to type in your initials and submit your score to be saved to local storage
@@ -200,6 +206,7 @@ function all_done() {
     answer_i_e.setAttribute("style", "display: flex;");
     submit_score_b_e.setAttribute("style", "display: flex;");
     enter_initials_l_e.setAttribute("style", "display: flex;");
+    view_highscores_b_e.setAttribute("style", "display: flex;")
     //Attribute Elements
     title_h_e.setAttribute("style", "margin: 0px; justify-content: flex-start;");
     final_score_l_e.setAttribute("style", "display: flex; justify-content: flex-start;");
@@ -255,8 +262,8 @@ function populate_list(a) {
         var li = document.createElement("li");
         li.textContent = user_data;
         li.setAttribute("data-index", i);
-        li.setAttribute("style", "background-color: rgb(204, 174, 238); padding: 5px; border-top: 1px solid white; border-bottom: 1px solid white");
-        saved_highscores_ul_e.setAttribute("style", "display: flex;");
+        li.setAttribute("style", "background-color: rgb(151, 190, 224); padding: 5px; border: 1px solid rgb(1, 12, 49); color: rgb(1, 12, 49); border-radius: 10px; margin-bottom: 7px;");
+        saved_highscores_ul_e.setAttribute("style", "display: flex;"); 
         saved_highscores_ul_e.appendChild(li);
     }
     high_scores();
@@ -290,7 +297,7 @@ function clear_highscores() {
     saved_highscores_ul_e.setAttribute("style", "display: none;");
     
     final_score_l_e.textContent = "Highscores will populate here when you complete the quiz";
-    final_score_l_e.setAttribute("style", "background-color: rgb(204, 174, 238); padding: 5px; border-top: 1px solid white; border-bottom: 1px solid white; margin: 16px 0px;");
+    final_score_l_e.setAttribute("style", "background-color: rgb(151, 190, 224); padding: 5px; border: 1px solid rgb(1, 12, 49); margin: 16px 0px; color: rgb(1, 12, 49); border-radius: 10px;");
     final_score_l_e.setAttribute("style", "display: flex;");
 
     // title_h_e.setAttribute("style", "margin-bottom: 50px;");
