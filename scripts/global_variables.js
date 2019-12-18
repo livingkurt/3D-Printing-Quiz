@@ -35,6 +35,12 @@ var choice_2_b_e = document.getElementById("choice_2_b")
 var choice_3_b_e = document.getElementById("choice_3_b")
 var choice_4_b_e = document.getElementById("choice_4_b")
 
+//Audio
+
+// var correct_au_e = document.getElementById("correct_au")
+// var incorrect_au_e = document.getElementById("incorrect_au")
+
+
 //Groups
 var highscores_b_g_e = document.getElementById("highscores_b_g")
 

@@ -12,6 +12,9 @@ function start_quiz(){
     //Show Elements
     multiple_choice_ul_e.setAttribute("style", "display: flex;");
     change_choices(all_choices_list, all_buttons_list)
+    var begin_au_e = document.createElement("audio");
+    begin_au_e.setAttribute("src", "assets/audio/begin.mp3");
+    begin_au_e.play();
     setTime();
 
 }
@@ -52,7 +55,11 @@ function is_correct(event) {
             correct_incorrect_l_e.innerHTML = "Correct!"
             score = score + 10;
             console.log(score)
+            var correct_au_e = document.createElement("audio");
+            correct_au_e.setAttribute("src", "assets/audio/correct.wav");
+            correct_au_e.play();
             setTimeout(next_question, 1000);
+            // correct_au_e.pause();
 
         }
         else if (user_choice !== answer_list[question_num]){
@@ -60,11 +67,23 @@ function is_correct(event) {
             correct_incorrect_l_e.innerHTML = "Incorrect!"
             window.secondsLeft = secondsLeft - 5;
             console.log(score)
+            var incorrect_au_e = document.createElement("audio");
+            incorrect_au_e.setAttribute("src", "assets/audio/incorrect.wav");
+            incorrect_au_e.play();
             setTimeout(next_question, 1000);
+            // incorrect_au_e.pause();
         
         }
     }
 }
+
+// Theme Button
+$(".theme-button").on("click", function() {
+
+    // <audio id="correct_au" src="assets/audio/correct.mp3"></audio>
+    // <audio id="incorrect_au" src="assets/audio/incorrect.aiff"></audio>
+    
+});
 
 
 

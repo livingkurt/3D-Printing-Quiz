@@ -64,6 +64,9 @@ function view_highscores(){
 //Submits highscore to be stored in local storage and displayed on highscores page
 function submit_highscore() {
     //Check if there is anything in storage
+    var submit_au_e = document.createElement("audio");
+    submit_au_e.setAttribute("src", "assets/audio/submit.mp3");
+    submit_au_e.play();
     var highscore_saved_list = {}
     if (localStorage.getItem("scores") === null) { //If there isnt anything in storage
         console.log("is not Storage")
