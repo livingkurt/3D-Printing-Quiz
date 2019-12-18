@@ -48,8 +48,14 @@ function next_question() {
 function is_correct(event) {
     if (event.target.matches("button")){
         var user_choice = event.target.innerHTML.substring(3, )
-        line_hr_e.setAttribute("style", "display: flex;")
-        correct_incorrect_l_e.setAttribute("style", "display: flex;")
+        // line_hr_e.setAttribute("style", "display: flex;")
+        // correct_incorrect_l_e.setAttribute("style", "display: flex;")
+        line_hr_e.setAttribute("style", "opacity: 0;")
+        correct_incorrect_l_e.setAttribute("style", "opacity: 0;")
+        fade(line_hr_e);
+        fade(correct_incorrect_l_e);
+        
+    
         if (user_choice === answer_list[question_num]){
             console.log("correct")
             correct_incorrect_l_e.innerHTML = "Correct!"
@@ -63,6 +69,9 @@ function is_correct(event) {
 
         }
         else if (user_choice !== answer_list[question_num]){
+            negative_5_l_e.setAttribute("style", "justify-content: flex-end")
+            negative_5_l_e.setAttribute("style", "opacity: 0;")
+            fade(negative_5_l_e);
             console.log("Incorrect")
             correct_incorrect_l_e.innerHTML = "Incorrect!"
             window.secondsLeft = secondsLeft - 5;
@@ -72,21 +81,39 @@ function is_correct(event) {
             incorrect_au_e.play();
             setTimeout(next_question, 1000);
             // incorrect_au_e.pause();
-        
         }
+        
+        
     }
 }
 
-// Theme Button
-$(".theme-button").on("click", function() {
-
-    // <audio id="correct_au" src="assets/audio/correct.mp3"></audio>
-    // <audio id="incorrect_au" src="assets/audio/incorrect.aiff"></audio>
+function fade(element) {
+    var op = 1;  // initial opacity
+    var timer = setInterval(function () {
+        if (op <= 0.1){
+            clearInterval(timer);
+            element.style.display = 'none';
+        }
+        element.style.opacity = op;
+        element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+        op -= op * 0.1;
+    }, 50);
     
-});
+}
 
-
-
+function unfade(element) {
+    var op = 0.1;  // initial opacity
+    element.style.display = 'block';
+    var timer = setInterval(function () {
+        if (op >= 1){
+            clearInterval(timer);
+        }
+        element.style.opacity = op;
+        element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+        op += op * 0.1;
+    }, 10);
+    
+}
 
 function setTime() {
     var timerInterval = setInterval(function() {

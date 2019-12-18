@@ -4,13 +4,14 @@
     height: 75px;
 
 }
-#negative_5_l_e {
-    display: flex;
-    justify-content: flex-end;
-    font-size: 20px;
-    opacity: 0;
-}
-
+/* #negative_5_l_e { */
+    /* opacity: 0; */
+    /* display: none; */
+    /* justify-content: flex-start; */
+    /* justify-content: flex-end; */
+    /* font-size: 30px; */
+    
+/* } */
 
 #sub_container {
     display: flex;
@@ -44,8 +45,6 @@
     margin: 0px auto;
     
 }
-
-
 
 #space_li{
     display: none;

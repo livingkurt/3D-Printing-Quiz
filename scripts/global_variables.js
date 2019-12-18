@@ -34,6 +34,7 @@ var choice_1_b_e = document.getElementById("choice_1_b")
 var choice_2_b_e = document.getElementById("choice_2_b")
 var choice_3_b_e = document.getElementById("choice_3_b")
 var choice_4_b_e = document.getElementById("choice_4_b")
+negative_5_l_e.setAttribute("style", "opacity: 0;")
 
 //Audio
 
