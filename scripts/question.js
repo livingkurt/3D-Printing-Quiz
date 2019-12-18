@@ -36,11 +36,24 @@ function next_question() {
     //Change Text
     title_h_e.innerHTML = questions_list[question_num];
     if (question_num > 4){
-        all_done();
+        if (window.secondsLeft <= 0){
+            line_hr_e.setAttribute("style", "opacity: 1; display: flex;")
+            you_lose();
+        }
+        else {
+            all_done();
+        }
     }
     else {
-        change_choices(all_choices_list)
+        if (window.secondsLeft <= 0){
+            line_hr_e.setAttribute("style", "opacity: 1; display: flex;")
+            you_lose();
         }
+        else{
+         change_choices(all_choices_list)
+        }
+        }
+    
         
 }
 
@@ -48,11 +61,11 @@ function next_question() {
 function is_correct(event) {
     if (event.target.matches("button")){
         var user_choice = event.target.innerHTML.substring(3, )
-        // line_hr_e.setAttribute("style", "display: flex;")
+        line_hr_e.setAttribute("style", "display: flex;")
         // correct_incorrect_l_e.setAttribute("style", "display: flex;")
         line_hr_e.setAttribute("style", "opacity: 0;")
         correct_incorrect_l_e.setAttribute("style", "opacity: 0;")
-        fade(line_hr_e);
+        // fade(line_hr_e);
         fade(correct_incorrect_l_e);
         
     
@@ -82,6 +95,7 @@ function is_correct(event) {
             setTimeout(next_question, 1000);
             // incorrect_au_e.pause();
         }
+        
         
         
     }
@@ -137,12 +151,12 @@ function setTime() {
 start_quiz_b_e.addEventListener("click", start_quiz)
 view_highscores_b_e.addEventListener("click", view_highscores)
 multiple_choice_ul_e.addEventListener("click", is_correct)
-document.addEventListener("keypress", function (e) {
-    if (e.key === 'Enter') {
-        console.log("enter")
-        next_question();
-      }
-})
+// document.addEventListener("keypress", function (e) {
+//     if (e.key === 'Enter') {
+//         console.log("enter")
+//         next_question();
+//       }
+// })
 submit_score_b_e.addEventListener("click", submit_highscore)
 start_over_b_e.addEventListener("click", start_over)
 clear_highscores_b_e.addEventListener("click", clear_highscores)
