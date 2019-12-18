@@ -219,6 +219,16 @@ hr {
     li {
         max-width: 300px;
     }
+    .buttons {
+        font-size: 16px;
+    }
+    .choice_buttons {
+        font-size: 16px;
+    }
+    #enter_initials_l{
+        font-size: 16px;
+        min-width: 93px;
+    }
 }
 
 @media screen and (max-width: 553px) {
