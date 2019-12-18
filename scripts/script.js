@@ -1,4 +1,3 @@
-
 //Assign Pathways to Variables
 
 //Text
@@ -63,6 +62,12 @@ var all_buttons_list = [choice_1_b_e, choice_2_b_e, choice_3_b_e, choice_4_b_e]
 //Start Question count from 0
 var question_num = 0
 
+//Initalized Score Value
+var score = 0;
+
+//Initialized Time Value
+var secondsLeft = 30;
+
 //Event Listeners
 start_quiz_b_e.addEventListener("click", start_quiz)
 view_highscores_b_e.addEventListener("click", view_highscores)
@@ -122,13 +127,11 @@ function next_question() {
         }
         
 }
-var score = 0;
+
 //Pops up with a correct or incorrect label
 function is_correct(event) {
     if (event.target.matches("button")){
-        // console.log(event.target.matches("button"))
         var user_choice = event.target.innerHTML.substring(3, )
-        // console.log(answer_list[question_num])
         line_hr_e.setAttribute("style", "display: flex;")
         correct_incorrect_l_e.setAttribute("style", "display: flex;")
         if (user_choice === answer_list[question_num]){
@@ -136,8 +139,6 @@ function is_correct(event) {
             correct_incorrect_l_e.innerHTML = "Correct!"
             score = score + 10;
             console.log(score)
-            // await delay(2000);
-            // next_question();
             setTimeout(next_question, 1000);
 
         }
@@ -146,15 +147,14 @@ function is_correct(event) {
             correct_incorrect_l_e.innerHTML = "Incorrect!"
             window.secondsLeft = secondsLeft - 5;
             console.log(score)
-
             setTimeout(next_question, 1000);
-            
+        
         }
     }
 }
 
 
-var secondsLeft = 30;
+
 
 function setTime() {
     var timerInterval = setInterval(function() {
@@ -164,7 +164,6 @@ function setTime() {
     
     if(secondsLeft <= 0) {
         clearInterval(timerInterval);
-        // clearInterval(window.timerInterval)
         if (secondsLeft < 0 ) {
             secondsLeft = 0;
             time_l_e.textContent = "Time: " + secondsLeft;
@@ -191,7 +190,6 @@ function you_lose() {
 //End Quiz, allows you to type in your initials and submit your score to be saved to local storage
 function all_done() {
     //Hide Elements
-    
     multiple_choice_ul_e.setAttribute("style", "display: none;")
     line_hr_e.setAttribute("style", "display: none;")
     correct_incorrect_l_e.setAttribute("style", "display: none;")
@@ -216,17 +214,12 @@ function all_done() {
 
 function view_highscores(){
     var highscore_saved_list = {}
-    
-    
     if (localStorage.getItem("scores") === null) { //If there isnt anything in storage
         console.log("is not Storage")
         saved_highscores_ul_e.setAttribute("style", "display: none;");
         empty_highscores_table_l_e.textContent = "Highscores will populate here when you complete the quiz";
         empty_highscores_table_l_e.setAttribute("style", "display: flex;");
         empty_highscores_table_l_e.setAttribute("style", "display: flex; background-color: rgb(1, 10, 49); padding: 5px; border: 1px solid rgb(1, 12, 49); margin: 16px 0px; color: white; border-radius: 10px;");
-        
-
-        
     }
     
     else if (localStorage.getItem("scores") !== null) { //If there is something in storage
@@ -242,10 +235,7 @@ function view_highscores(){
 //Submits highscore to be stored in local storage and displayed on highscores page
 function submit_highscore() {
     //Check if there is anything in storage
-
     var highscore_saved_list = {}
-    
-    
     if (localStorage.getItem("scores") === null) { //If there isnt anything in storage
         console.log("is not Storage")
         var initials_to_save = answer_i_e.value;
@@ -261,10 +251,9 @@ function submit_highscore() {
         console.log(initials_to_save)
         var highscore_saved_list = JSON.parse(localStorage.getItem("scores"));
         console.log(highscore_saved_list)
-        // if (initials_to_save !== undefined){
-            highscore_saved_list[initials_to_save] = score
-            console.log(highscore_saved_list)
-            localStorage.setItem("scores", JSON.stringify(highscore_saved_list));
+        highscore_saved_list[initials_to_save] = score
+        console.log(highscore_saved_list)
+        localStorage.setItem("scores", JSON.stringify(highscore_saved_list));
     }
     populate_list(highscore_saved_list);
 }
@@ -303,6 +292,7 @@ function high_scores() {
     welcome_h_e.setAttribute("style", "display: none;");
     multiple_choice_ul_e.setAttribute("style", "display: none;")
     start_quiz_b_e.setAttribute("style", "display: none;");
+    view_highscores_b_e.setAttribute("style", "display: none;")
     //Show Elements
     title_h_e.setAttribute("style", "margin: 0px; justify-content: flex-start;");
     start_over_b_e.setAttribute("style", "display: flex;");
@@ -314,16 +304,12 @@ function high_scores() {
 
 //Deletes highscores from local storage
 function clear_highscores() {
-    // title_h_e.innerHTML = "High Scores";
     localStorage.clear();
     saved_highscores_ul_e.setAttribute("style", "display: none;");
     
     empty_highscores_table_l_e.textContent = "Highscores will populate here when you complete the quiz";
     empty_highscores_table_l_e.setAttribute("style", "background-color: rgb(1, 10, 49); padding: 5px; border: 1px solid rgb(1, 12, 49); margin: 16px 0px; color: white; border-radius: 10px;");
     final_sempty_highscores_table_l_ecore_l_e.setAttribute("style", "display: flex;");
-
-    // title_h_e.setAttribute("style", "margin-bottom: 50px;");
-    
 }
 //Starts the quiz back at the Landing page
 function start_over() {
