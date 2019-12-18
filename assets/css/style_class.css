@@ -1,0 +1,37 @@
+.all_done_container {
+    display: flex;
+    flex-direction: row;
+
+}
+
+.buttons {
+    background-color: rgb(1, 12, 49);
+    color: white;
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.choice_buttons {
+    background-color: rgb(1, 12, 49);
+    color: white;
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 10px;
+}
+.buttons:hover {
+    background-color: rgb(67, 72, 97);
+}
+
+.choice_buttons:hover {
+    background-color: rgb(67, 72, 97);
+
+}
+
+.buttons:focus {
+    outline:0;
+}
+
+.choice_buttons:focus {
+    outline:0;
+}

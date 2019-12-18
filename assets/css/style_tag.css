@@ -1,0 +1,90 @@
+
+
+
+* {
+    font-family: 'Quicksand', sans-serif;
+}
+
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgb(191, 218, 253);
+    color: rgb(1, 12, 49);
+    font-family: 'Lilita One', cursive;
+}
+
+
+p {
+    text-align: center;
+}
+
+ul {
+    list-style-type: none;
+  }
+
+hr {
+    border: 0;
+    display: none;
+    width: 100%;               
+    background-color:rgb(1, 12, 49);
+    height: 1px;
+}
+
+
+@media screen and (max-width: 600px) {
+    li {
+        max-width: 300px;
+    }
+    .buttons {
+        font-size: 16px;
+    }
+    .choice_buttons {
+        font-size: 16px;
+    }
+    #enter_initials_l{
+        font-size: 16px;
+        min-width: 93px;
+    }
+}
+
+@media screen and (max-width: 553px) {
+    #container_2 {
+        width: 80%;
+    }
+    .buttons {
+        font-size: 16px;
+    }
+    .choice_buttons {
+        font-size: 16px;
+    }
+    #enter_initials_l{
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 330px) {
+    #container_2 {
+        width: 75%;
+    }
+    #title_h {
+        font-size: 25px;
+    }
+    #welcome_h {
+        font-size: 16px;
+    }
+    p {
+        font-size: 14px;
+    }
+    #view_highscores_b {
+        font-size: 16px;
+    }
+    #time_l {
+        font-size: 16px;
+    }
+    #enter_initials_l{
+        min-width: 40px;
+    }
+    
+}
