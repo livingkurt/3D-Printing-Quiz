@@ -43,6 +43,7 @@ function all_done() {
 
 function view_highscores(){
     var highscore_saved_list = {}
+    
     if (localStorage.getItem("scores") === null) { //If there isnt anything in storage
         console.log("is not Storage")
         saved_highscores_ul_e.setAttribute("style", "display: none;");
@@ -136,6 +137,9 @@ function high_scores() {
 
 //Deletes highscores from local storage
 function clear_highscores() {
+    var clear_au_e = document.createElement("audio");
+    clear_au_e.setAttribute("src", "assets/audio/clear_highscores.wav");
+    clear_au_e.play();
     localStorage.clear();
     saved_highscores_ul_e.setAttribute("style", "display: none;");
     
@@ -145,6 +149,9 @@ function clear_highscores() {
 }
 //Starts the quiz back at the Landing page
 function start_over() {
+    // var start_over_au_e = document.createElement("audio");
+    // start_over_au_e.setAttribute("src", "assets/audio/start_over.wav");
+    // start_over_au_e.play();
     location.reload();
     
 }
