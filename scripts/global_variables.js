@@ -73,4 +73,4 @@ var question_num = 0
 var score = 0;
 
 //Initialized Time Value
-var secondsLeft = 30;
+var secondsLeft = 60;

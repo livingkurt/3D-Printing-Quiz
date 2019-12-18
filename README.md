@@ -29,7 +29,7 @@ The main container contains a
 In the top left and right corners there is a button and a label
 
 * View Highscores
-* Time: 30
+* Time: 60
 
 Simple enough interface, if you would like to play
 Click Start Quiz
